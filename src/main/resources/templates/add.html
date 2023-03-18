@@ -13,20 +13,11 @@
     <title>Add form</title>
   </head>
   <body>
-    <div
-      class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5"
-    >
+    <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
       <h1 class="mb-3">Add Items</h1>
       <form method="post" th:object="${brands}">
         <div th:if="${#fields.hasErrors()}">
           <span> Please correct the problems below and resubmit. </span>
-        </div>
-        <div class="mb-3">
-          <label for="id" class="form-label">Item ID: </label>
-          <input type="number" class="form-control" id="id" th:field="*{id}"/>
-          <span class="validationError" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">
-            ID error
-          </span>
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Item Name: </label>
@@ -35,7 +26,7 @@
             Name error
           </span>
         </div>
-        <select th:field="*{brandNames}" class="form-select mt-5 mb-5" aria-label="Anime selection">
+        <select th:field="*{brandNames}" class="form-select mt-5 mb-5" aria-label="brands selection">
             <option th:each="bname: ${bnames}" th:value="${bname}" th:text="${bname.title}"/>
         </select>
         <div class="mb-3">
@@ -46,14 +37,14 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="yOfCreation" class="form-label">Items Year of Creation: </label>
-          <input type="number" th:field="*{yOfCreation}" class="form-control" id="yOfCreation"/>
-          <span class="validationError" th:if="${#fields.hasErrors('yOfCreation')}" th:errors="*{yOfCreation}">
-            Year of Creation must be greater than 2021
+          <label for="yearOfCreation" class="form-label">Items Year of Creation: </label>
+          <input type="number" th:field="*{yearOfCreation}" class="form-control" id="yearOfCreation"/>
+          <span class="validationError" th:if="${#fields.hasErrors('yearOfCreation')}" th:errors="*{yearOfCreation}">
+            Year of Creation must be lower than 2022
           </span>
         </div>
         <button type="submit" class="btn btn-primary mt-5">
-          Create Item
+          Add Item
         </button>
       </form>
     </div>
